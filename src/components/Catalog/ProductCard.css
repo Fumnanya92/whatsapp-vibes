@@ -1,0 +1,181 @@
+/*------------------------------------------*/
+/*  ProductCard.css                          */
+/*------------------------------------------*/
+
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  transition: box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: relative; /* For positioning the NEW badge */
+  /* Ensure card text contrasts with white background even if global vars are dark */
+  color: var(--color-card-text, #222);
+}
+
+/* NEW Badge */
+.new-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  animation: newBadgeGlow 2s infinite alternate;
+}
+
+.new-badge span {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+@keyframes newBadgeGlow {
+  0% {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+  }
+}
+
+.image-wrapper {
+  width: 100%;
+  /* Use a fixed aspect ratio so images are consistently sized and crop nicely */
+  aspect-ratio: 4 / 3;
+  min-height: 150px; /* Ensure the wrapper has a minimum height */
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Fill the image area while preserving aspect ratio */
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 150px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 14px;
+}
+
+.product-details {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-card-text, #222);
+  flex-grow: 1;
+  /* Ensure name sits above other elements and wraps neatly */
+  z-index: 2;
+  word-break: break-word;
+}
+
+/* Ensure stronger specificity than global catalog h3 rules */
+.product-card h3.product-name {
+  color: var(--color-card-text, #222) !important;
+}
+
+.product-price {
+  font-size: 1rem;
+  font-weight: 500;
+  /* Use a stronger, higher-contrast price color for readability on white cards */
+  color: var(--color-card-price, #ff4081);
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+  margin: 0;
+}
+
+/* Product Status and Availability */
+.product-status {
+  margin: 4px 0;
+}
+
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.availability-badge.available {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #4caf50;
+}
+
+.availability-badge.sold-out {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #f44336;
+}
+
+/* Increase specificity to override page-level styles that may target .product-card p */
+.product-card p.product-price {
+  color: var(--color-card-price, #ff4081) !important;
+  font-weight: 700 !important;
+}
+
+.buy-button {
+  align-self: stretch;
+  padding: 0.75rem;
+  background-color: var(--color-btn-primary, #ff4081);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 0.5rem;
+}
+
+.buy-button:hover {
+  background-color: var(--color-btn-primary-hover, #f50057);
+}
+
+.buy-button:active {
+  transform: scale(0.97);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .product-details {
+    padding: 0.75rem;
+  }
+  .product-name {
+    font-size: 1rem;
+  }
+  .product-price {
+    font-size: 0.95rem;
+  }
+  .buy-button {
+    font-size: 0.9rem;
+    padding: 0.65rem;
+  }
+}

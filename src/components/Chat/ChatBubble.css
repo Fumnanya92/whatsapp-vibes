@@ -1,0 +1,332 @@
+/* ChatBubble.css - Optimized for Mobile */
+
+/* Base bubble container */
+.chat-bubble {
+  max-width: 100%;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  background-color: #e0e0e0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  hyphens: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* User‐sent bubble */
+.chat-bubble-user {
+  background: linear-gradient(135deg, #C98FEA 0%, #B67DD9 100%);
+  color: #4B007D;
+  align-self: flex-end;
+  border-radius: 18px 18px 6px 18px;
+  box-shadow: 0 4px 12px rgba(201, 143, 234, 0.3);
+  font-weight: 500;
+}
+
+/* Grace's replies */
+.chat-bubble-grace {
+  background: rgba(248, 248, 248, 0.95);
+  color: #4B007D;
+  align-self: flex-start;
+  border-radius: 18px 18px 18px 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Proactive message styling - Subtle and elegant */
+.chat-bubble-proactive {
+  background: linear-gradient(135deg, #FAF8FF 0%, #F0EBFF 100%) !important;
+  border-left: 3px solid #C08AF8;
+  position: relative;
+  animation: gentleFadeIn 0.4s ease-out;
+  box-shadow: 0 3px 12px rgba(192, 138, 248, 0.15);
+}
+
+.chat-bubble-proactive::before {
+  content: "💭";
+  position: absolute;
+  top: -8px;
+  right: 8px;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+@keyframes gentleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+/* Catalogue grid layout */
+.catalogue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 0.75rem 0;
+}
+
+/* Individual product card */
+.product-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Product image container */
+.product-image-container {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Product image */
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+/* Product image placeholder */
+.product-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 2px dashed #d1d9e0;
+  border-radius: 6px;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.product-image-placeholder span:first-child {
+  font-size: 2rem;
+  opacity: 0.7;
+}
+
+.product-image-placeholder span:last-child {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Product info section */
+.product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Product name */
+.product-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Product price */
+.product-price {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #059669;
+  margin: 0;
+  text-align: right;
+}
+
+/* Inline images: fit within bubble's width */
+.chat-image-inline {
+  max-width: 100%;
+  border-radius: 8px;
+  display: block;
+  margin: 0.25rem 0;
+}
+
+/* Inline links */
+.chat-link-inline {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Highlighted markdown and normal links in chat bubbles */
+.chat-bubble a,
+.chat-bubble .chat-link-inline {
+  color: #007bff;
+  text-decoration: underline;
+  font-weight: 500;
+  background: #e6f0ff;
+  padding: 1px 3px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.chat-bubble a:hover,
+.chat-bubble .chat-link-inline:hover {
+  background: #cce0ff;
+  color: #0056b3;
+}
+
+/* Timestamp style */
+.chat-timestamp {
+  font-size: 0.6875rem;
+  color: #888;
+  margin-top: 0.75rem;
+  text-align: right;
+  opacity: 0.8;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .chat-bubble {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.9rem;
+  }
+  
+  .catalogue-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.875rem;
+  }
+  
+  .product-card {
+    min-height: 280px;
+    padding: 0.875rem;
+  }
+  
+  .product-image-container {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-bubble {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  .catalogue-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .product-card {
+    min-height: 260px;
+    padding: 0.75rem;
+  }
+  
+  .product-image-container {
+    height: 140px;
+  }
+  
+  .product-name {
+    font-size: 0.9375rem;
+  }
+  
+  .product-price {
+    font-size: 1rem;
+  }
+}
+
+/* Legacy catalogue styles for backward compatibility */
+.catalogue-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+.catalogue-item {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 0.75rem;
+  background: #fafbfc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 260px;
+}
+
+.catalogue-name {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.catalogue-price {
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.catalogue-image {
+  max-width: 160px;
+  max-height: 160px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.catalogue-image.placeholder {
+  opacity: 0.5;
+}
